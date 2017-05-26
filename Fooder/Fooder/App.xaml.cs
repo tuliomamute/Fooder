@@ -13,7 +13,7 @@ namespace Fooder
         {
             InitializeComponent();
 
-            MainPage = new Fooder.MainPage();
+            MainPage = new NavigationPage(new Fooder.MainPage());
         }
 
         protected override void OnStart()

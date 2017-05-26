@@ -4183,6 +4183,9 @@ namespace Fooder.Droid
 			// aapt resource value: 0x7f0a0016
 			public const int Widget_MediaRouter_MediaRouteButton = 2131361814;
 			
+			// aapt resource value: 0x7f0a0175
+			public const int splashscreen = 2131362165;
+			
 			static Style()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
