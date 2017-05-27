@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fooder.Views.MasterPaginaMestraPage"
+             xmlns:local="clr-namespace:Fooder.Views;assembly=Fooder"
+             Title="MasterPaginaMestraPage">
+    
+    <MasterDetailPage.Master>
+        <local:MenuLateralPage x:Name="masterPage"></local:MenuLateralPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:DadosIniciaisPage></local:DadosIniciaisPage>
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

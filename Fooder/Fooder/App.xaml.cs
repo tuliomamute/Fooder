@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Fooder.Views;
 using Xamarin.Forms;
+using Fooder.InternalService;
 
 namespace Fooder
 {
     public partial class App : Application
     {
+        public static NavigationService NavigationService { get; }
+= new NavigationService();
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Fooder.MainPage());
+            MainPage = new MasterPaginaMestraPage();
         }
 
         protected override void OnStart()

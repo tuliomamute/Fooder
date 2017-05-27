@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fooder.Views.MenuLateralPage"
+             Title="Menu Lateral"
+             Icon="hamburguer.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BackgroundColorMasterMenu" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#FF5252"></Setter>
+                <Setter Property="HeightRequest" Value="85"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Style="{StaticResource BackgroundColorMasterMenu}">
+                <Label Text="Fooder" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Large"></Label>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand">
+            <ListView x:Name="lstPaginas" VerticalOptions="FillAndExpand" SeparatorVisibility="None" ItemsSource="{Binding masterPageItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell TextColor="Black" Text="{Binding Titulo}" Detail="{Binding Detalhes}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
