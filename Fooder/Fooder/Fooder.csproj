@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\DependencyService\IFileHelper.cs" />
     <Compile Include="InternalService\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityClass\MasterPageItem.cs" />
@@ -79,7 +80,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DependencyService\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>

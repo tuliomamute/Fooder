@@ -1,5 +1,4 @@
 ﻿using Fooder.UtilityClass;
-using Fooder.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
