@@ -28,6 +28,11 @@ namespace Fooder.Views
         {
             ((AssociacaoProdutosListaPageViewModel)BindingContext).AdicionarProdutoSelecionadoTemporariamente(e.SelectedItem as Produto);
         }
+        public void OnItemAdded(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
 }

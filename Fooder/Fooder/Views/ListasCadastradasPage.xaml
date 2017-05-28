@@ -5,14 +5,11 @@
              Title="Listas Cadastradas">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="NOVO" Clicked="OnItemAdded">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource" Android="plus.png" />
-            </ToolbarItem.Icon>
-        </ToolbarItem>
+        <ToolbarItem Text="Novo" Clicked="OnItemAdded">
+1        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="LstProdutosCadastradas" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
+    <ListView x:Name="LstProdutosCadastradas" SeparatorVisibility="Default" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

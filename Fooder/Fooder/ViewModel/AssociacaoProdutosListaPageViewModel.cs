@@ -18,10 +18,12 @@ namespace Fooder.ViewModel
         public List<Produto> produtosSelecionados { get; set; }
         public Lista ListaSelecionada { get; set; }
         public ObservableCollection<Lista> ListasGravadas { get; set; }
-
+        public ObservableCollection<Produto> ListaProdutos { get; set; }
         public AssociacaoProdutosListaPageViewModel()
         {
             ListasGravadas = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
+            ListaProdutos = new ObservableCollection<Produto>(App.Database.Produto_GetItemsAsync().Result);
+
             SalvarProdutosLista = new Command(() => PersistirElementosBaseDados());
         }
         private void PersistirElementosBaseDados()

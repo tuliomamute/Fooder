@@ -36,27 +36,30 @@ namespace Fooder
 
         private void CriarProdutos()
         {
-            Produto prod = new Produto();
-            prod.NomeProduto = "Produto 1";
+            if (Database.Produto_GetItemsAsync().Result.Count == 0)
+            {
 
-            Database.Produto_SaveItemAsync(prod);
+                Produto prod = new Produto();
+                prod.NomeProduto = "Produto 1";
 
-            prod = new Produto();
-            prod.NomeProduto = "Produto 2";
+                Database.Produto_SaveItemAsync(prod);
 
-            Database.Produto_SaveItemAsync(prod);
+                prod = new Produto();
+                prod.NomeProduto = "Produto 2";
 
-            prod = new Produto();
-            prod.NomeProduto = "Produto 3";
+                Database.Produto_SaveItemAsync(prod);
 
-            Database.Produto_SaveItemAsync(prod);
+                prod = new Produto();
+                prod.NomeProduto = "Produto 3";
+
+                Database.Produto_SaveItemAsync(prod);
 
 
-            prod = new Produto();
-            prod.NomeProduto = "Produto 4";
+                prod = new Produto();
+                prod.NomeProduto = "Produto 4";
 
-            Database.Produto_SaveItemAsync(prod);
-
+                Database.Produto_SaveItemAsync(prod);
+            }
         }
 
         protected override void OnStart()
