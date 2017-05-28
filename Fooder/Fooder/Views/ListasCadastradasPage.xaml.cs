@@ -1,4 +1,5 @@
-﻿using Fooder.ViewModel;
+﻿using Fooder.Model;
+using Fooder.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,20 +23,23 @@ namespace Fooder.Views
             InitializeComponent();
             BindingContext = new ListasCadastradasPageViewModel();
         }
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             if (BindingContext != null)
             {
                 ((ListasCadastradasPageViewModel)BindingContext).BuscaListaDatabase();
             }
-            // Reset the 'resume' id, since we just want to re-start here
-            //LstListasCadastradas.ItemsSource = await App.Database.GetItemsAsync();
         }
         public void OnItemAdded(object sender, EventArgs e)
         {
             Navigation.PushAsync(new CriarListaPage());
         }
+        public void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new CriarListaPage(e.SelectedItem as Lista));
+        }
+
     }
 
 }

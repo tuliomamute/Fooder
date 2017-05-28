@@ -1,4 +1,5 @@
-﻿using Fooder.ViewModel;
+﻿using Fooder.Model;
+using Fooder.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,11 @@ namespace Fooder.Views
         {
             InitializeComponent();
             BindingContext = new CriarListaPageViewModel(Navigation);
+        }
+        public CriarListaPage(Lista listaObjetos)
+        {
+            InitializeComponent();
+            BindingContext = new CriarListaPageViewModel(Navigation, listaObjetos);
         }
     }
 

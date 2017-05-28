@@ -12,7 +12,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="LstListasCadastradas" ItemsSource="{Binding ListaObjetos}" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
+    <ListView x:Name="LstListasCadastradas" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

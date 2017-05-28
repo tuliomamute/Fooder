@@ -7,7 +7,7 @@
         <StackLayout Padding="10">
             <Label Text="Nome Lista"></Label>
             <Entry Text="{Binding objLista.NomeLista}"></Entry>
-            <Button Command="{Binding Navigate}" Text="Incluir Novo"></Button>
+            <Button Command="{Binding Navigate}" Text="Salvar"></Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>
