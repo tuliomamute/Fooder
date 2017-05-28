@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fooder.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,34 +22,20 @@ namespace Fooder.Views
             InitializeComponent();
             BindingContext = new ListasCadastradasPageViewModel();
         }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (BindingContext != null)
+            {
+                ((ListasCadastradasPageViewModel)BindingContext).BuscaListaDatabase();
+            }
+            // Reset the 'resume' id, since we just want to re-start here
+            //LstListasCadastradas.ItemsSource = await App.Database.GetItemsAsync();
+        }
+        public void OnItemAdded(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CriarListaPage());
+        }
     }
 
-    class ListasCadastradasPageViewModel : INotifyPropertyChanged
-    {
-
-        public ListasCadastradasPageViewModel()
-        {
-            IncreaseCountCommand = new Command(IncreaseCount);
-        }
-
-        int count;
-
-        string countDisplay = "You clicked 0 times.";
-        public string CountDisplay
-        {
-            get { return countDisplay; }
-            set { countDisplay = value; OnPropertyChanged(); }
-        }
-
-        public ICommand IncreaseCountCommand { get; }
-
-        void IncreaseCount() =>
-            CountDisplay = $"You clicked {++count} times";
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-    }
 }

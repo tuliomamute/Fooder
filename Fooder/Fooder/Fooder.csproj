@@ -40,10 +40,14 @@
     </Compile>
     <Compile Include="Data\ConnectDatabase.cs" />
     <Compile Include="Interfaces\DependencyService\IFileHelper.cs" />
-    <Compile Include="InternalService\NavigationService.cs" />
     <Compile Include="Model\Lista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityClass\MasterPageItem.cs" />
+    <Compile Include="ViewModel\CriarListaPageViewModel.cs" />
+    <Compile Include="ViewModel\ListasCadastradasPageViewModel.cs" />
+    <Compile Include="Views\CriarListaPage.xaml.cs">
+      <DependentUpon>CriarListaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DadosIniciaisPage.xaml.cs">
       <DependentUpon>DadosIniciaisPage.xaml</DependentUpon>
     </Compile>
@@ -94,7 +98,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Folder Include="InternalService\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterPaginaMestraPage.xaml">
@@ -119,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ListasCadastradasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CriarListaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

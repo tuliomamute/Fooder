@@ -9,7 +9,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Fooder.Droid.DependencyService;
-using SQLite.Net.Interop;
 using Fooder.Interfaces.DependencyService;
 using Xamarin.Forms;
 using System.IO;

@@ -18,7 +18,7 @@
                 <Label Text="Fooder" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Large"></Label>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand">
-            <ListView x:Name="lstPaginas" VerticalOptions="FillAndExpand" SeparatorVisibility="None" ItemsSource="{Binding masterPageItem}">
+                <ListView x:Name="lstPaginas" VerticalOptions="FillAndExpand" SeparatorVisibility="None" ItemsSource="{Binding masterPageItem}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell TextColor="Black" Text="{Binding Titulo}" Detail="{Binding Detalhes}"></TextCell>

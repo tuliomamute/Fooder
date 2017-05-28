@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Fooder.Views;
 using Xamarin.Forms;
-using Fooder.InternalService;
 using Fooder.Interfaces.DependencyService;
 using Fooder.Data;
 
@@ -13,8 +12,6 @@ namespace Fooder
     public partial class App : Application
     {
         static ConnectDatabase database;
-
-        public static NavigationService NavigationService { get; } = new NavigationService();
 
         public static ConnectDatabase Database
         {

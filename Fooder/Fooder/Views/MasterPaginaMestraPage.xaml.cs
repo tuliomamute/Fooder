@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fooder.UtilityClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,6 +22,18 @@ namespace Fooder.Views
             menu = new MenuLateralPage();
             Master = menu;
             Detail = new NavigationPage(new DadosIniciaisPage());
+            menu.ListPaginas.ItemSelected += OnItemSelected;
+        }
+        void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as MasterPageItem;
+            if (item != null)
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                menu.ListPaginas.SelectedItem = null;
+                IsPresented = false;
+            }
         }
     }
+
 }
