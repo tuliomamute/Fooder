@@ -27,7 +27,7 @@ namespace Fooder.Data
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
 
         }
@@ -68,7 +68,7 @@ namespace Fooder.Data
             return data.Table<ProdutosLista>().ToListAsync();
         }
 
-        public Task<int> ProdutoLista_SaveItemAsync(Lista item)
+        public Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)
         {
             if (item.CodigoLista != 0)
                 return data.UpdateAsync(item);

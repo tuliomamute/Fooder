@@ -45,8 +45,12 @@
     <Compile Include="Model\ProdutosLista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityClass\MasterPageItem.cs" />
+    <Compile Include="ViewModel\AssociacaoProdutosListaPageViewModel.cs" />
     <Compile Include="ViewModel\CriarListaPageViewModel.cs" />
     <Compile Include="ViewModel\ListasCadastradasPageViewModel.cs" />
+    <Compile Include="Views\AssociacaoProdutosListaPage.xaml.cs">
+      <DependentUpon>AssociacaoProdutosListaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CriarListaPage.xaml.cs">
       <DependentUpon>CriarListaPage.xaml</DependentUpon>
     </Compile>
@@ -131,6 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CriarListaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AssociacaoProdutosListaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

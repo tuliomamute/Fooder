@@ -35,13 +35,13 @@ namespace Fooder.Views
                 TargetType = typeof(ListasCadastradasPage)
             });
 
-            //masterPageItem.Add(new MasterPageItem
-            //{
-            //    Titulo = "Produtos",
-            //    Imagem = "icon.png",
-            //    Detalhes = "Gerencie os produtos de uma lista",
-            //    TargetType = typeof(ListasCadastradasPage)
-            //});
+            masterPageItem.Add(new MasterPageItem
+            {
+                Titulo = "Associação de Produtos",
+                Imagem = "icon.png",
+                Detalhes = "Gerencie os produtos de uma lista",
+                TargetType = typeof(AssociacaoProdutosListaPage)
+            });
 
             //masterPageItem.Add(new MasterPageItem
             //{
