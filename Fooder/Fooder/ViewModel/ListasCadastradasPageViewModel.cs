@@ -24,7 +24,7 @@ namespace Fooder.ViewModel
         public async void BuscaListaDatabase()
         {
             Refresh = true;
-            ListaObjetos = new ObservableCollection<Lista>(await App.Database.GetItemsAsync());
+            ListaObjetos = new ObservableCollection<Lista>(await App.Database.Lista_GetItemsAsync());
             Refresh = false;
         }
     }

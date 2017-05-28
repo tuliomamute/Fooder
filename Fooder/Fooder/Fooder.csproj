@@ -41,6 +41,8 @@
     <Compile Include="Data\ConnectDatabase.cs" />
     <Compile Include="Interfaces\DependencyService\IFileHelper.cs" />
     <Compile Include="Model\Lista.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\ProdutosLista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilityClass\MasterPageItem.cs" />
     <Compile Include="ViewModel\CriarListaPageViewModel.cs" />

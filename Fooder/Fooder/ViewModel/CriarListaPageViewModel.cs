@@ -30,7 +30,7 @@ namespace Fooder.ViewModel
         }
         private async void FindSummoner()
         {
-            await App.Database.SaveItemAsync(objLista);
+            await App.Database.Lista_SaveItemAsync(objLista);
             await Navigation.PopAsync();
         }
     }
