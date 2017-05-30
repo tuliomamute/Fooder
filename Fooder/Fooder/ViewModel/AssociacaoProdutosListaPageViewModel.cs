@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Fooder.Model;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace Fooder.ViewModel
 {
@@ -15,26 +16,38 @@ namespace Fooder.ViewModel
     public class AssociacaoProdutosListaPageViewModel
     {
         public ICommand SalvarProdutosLista { get; set; }
-        public List<Produto> produtosSelecionados { get; set; }
+        public List<ProdutoQuantidade> produtosSelecionados { get; set; }
         public Lista ListaSelecionada { get; set; }
         public ObservableCollection<Lista> ListasGravadas { get; set; }
-        public ObservableCollection<Produto> ListaProdutos { get; set; }
+        public ObservableCollection<ProdutoQuantidade> ListaProdutos { get; set; }
         public AssociacaoProdutosListaPageViewModel()
         {
-            ListasGravadas = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
-            ListaProdutos = new ObservableCollection<Produto>(App.Database.Produto_GetItemsAsync().Result);
+            try
+            {
+                ListasGravadas = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
+                //ListaProdutos = new ObservableCollection<ProdutoQuantidade>(App.Database.Produto_GetItemsAsync().Result.Cast<ProdutoQuantidade>());
 
-            SalvarProdutosLista = new Command(() => PersistirElementosBaseDados());
+                var serializedParent = JsonConvert.SerializeObject(App.Database.Produto_GetItemsAsync().Result);
+                ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
+
+                SalvarProdutosLista = new Command(() => PersistirElementosBaseDados());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         private void PersistirElementosBaseDados()
         {
             ProdutosLista prodlist = null;
             prodlist = new ProdutosLista();
 
-            foreach (Produto item in produtosSelecionados)
+            foreach (ProdutoQuantidade item in produtosSelecionados)
             {
                 prodlist.CodigoProduto = item.CodigoProduto;
                 prodlist.CodigoLista = ListaSelecionada.CodigoLista;
+                prodlist.QuantidadeProduto = item.QuantidadeProduto;
 
                 App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
@@ -43,10 +56,10 @@ namespace Fooder.ViewModel
         {
             produtosSelecionados.Clear();
         }
-        public void AdicionarProdutoSelecionadoTemporariamente(Produto prod)
+        public void AdicionarProdutoSelecionadoTemporariamente(ProdutoQuantidade prod)
         {
             if (produtosSelecionados == null)
-                produtosSelecionados = new List<Produto>();
+                produtosSelecionados = new List<ProdutoQuantidade>();
 
             produtosSelecionados.Add(prod);
         }

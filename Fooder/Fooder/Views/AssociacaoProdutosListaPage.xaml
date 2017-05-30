@@ -15,10 +15,14 @@
         </StackLayout>
         <ScrollView>
             <ListView x:Name="LstProdutosCadastrados" ItemsSource="{Binding ListaProdutos}" SeparatorVisibility="Default" ItemSelected="LstProdutosCadastrados_ItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding NomeProduto}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding NomeProduto}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Entry Keyboard="Numeric" HorizontalOptions="End" Text="{Binding QuantidadeProduto}"></Entry>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

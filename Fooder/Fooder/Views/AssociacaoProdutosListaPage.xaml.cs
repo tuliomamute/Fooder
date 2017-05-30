@@ -26,7 +26,7 @@ namespace Fooder.Views
 
         private void LstProdutosCadastrados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            ((AssociacaoProdutosListaPageViewModel)BindingContext).AdicionarProdutoSelecionadoTemporariamente(e.SelectedItem as Produto);
+            ((AssociacaoProdutosListaPageViewModel)BindingContext).AdicionarProdutoSelecionadoTemporariamente(e.SelectedItem as ProdutoQuantidade);
         }
         public void OnItemAdded(object sender, EventArgs e)
         {

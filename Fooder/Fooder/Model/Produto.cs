@@ -13,4 +13,9 @@ namespace Fooder.Model
         public int CodigoProduto { get; set; }
         public string NomeProduto { get; set; }
     }
+    public class ProdutoQuantidade : Produto
+    {
+        public int QuantidadeProduto { get; set; }
+    }
+
 }
