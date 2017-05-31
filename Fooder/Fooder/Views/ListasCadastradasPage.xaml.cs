@@ -37,7 +37,7 @@ namespace Fooder.Views
         }
         public void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new CriarListaPage(e.SelectedItem as Lista));
+            Navigation.PushAsync(new AssociacaoProdutosListaPage(e.SelectedItem as Lista));
         }
 
     }

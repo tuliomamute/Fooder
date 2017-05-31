@@ -11,11 +11,13 @@
 
     <StackLayout>
         <StackLayout Padding="10">
-            <Picker x:Name="ComboListas" ItemsSource="{Binding ListasGravadas}" ItemDisplayBinding="{Binding NomeLista}"  SelectedItem="{Binding ListaSelecionada, Mode=TwoWay}" />
+            <Label Text="Código Lista: "></Label>
+            <Label Text="{Binding ListaSelecionada.CodigoLista}"></Label>
+            <Label Text="Nome Lista: "></Label>
+            <Entry Text="{Binding ListaSelecionada.NomeLista}"></Entry>
         </StackLayout>
         <ScrollView>
-            <ListView x:Name="LstProdutosCadastrados" ItemsSource="{Binding ListaProdutos}" SeparatorVisibility="Default" ItemSelected="LstProdutosCadastrados_ItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
-
+            <ListView x:Name="LstProdutosCadastrados" ItemsSource="{Binding ListaProdutos}" SeparatorVisibility="Default" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

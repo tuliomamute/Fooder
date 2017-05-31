@@ -18,21 +18,11 @@ namespace Fooder.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AssociacaoProdutosListaPage : ContentPage
     {
-        public AssociacaoProdutosListaPage()
+        public AssociacaoProdutosListaPage(Lista aLista)
         {
             InitializeComponent();
-            BindingContext = new AssociacaoProdutosListaPageViewModel();
+            BindingContext = new AssociacaoProdutosListaPageViewModel(aLista);
         }
-
-        private void LstProdutosCadastrados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            ((AssociacaoProdutosListaPageViewModel)BindingContext).AdicionarProdutoSelecionadoTemporariamente(e.SelectedItem as ProdutoQuantidade);
-        }
-        public void OnItemAdded(object sender, EventArgs e)
-        {
-
-        }
-
     }
 
 }
