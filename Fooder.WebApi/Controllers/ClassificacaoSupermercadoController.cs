@@ -1,4 +1,5 @@
 ﻿using Fooder.WebApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,14 @@ namespace Fooder.WebApi.Controllers
         /// </summary>
         /// <param name="ListaProdutos"></param>
         /// <returns></returns>
-        public IHttpActionResult Get(ProdutosLista[] ListaProdutos)
+        public IHttpActionResult Get([FromBody]ProdutosLista[] ListaProdutos)
         {
+
             int[] CodigoProdutos = ListaProdutos.Select(x => x.CodigoProduto).Distinct().ToArray();
 
             List<ESTOQUE> elementos_estoque = db.ESTOQUE.Where(x => CodigoProdutos.Contains(x.PRODUTO_ID)).ToList();
             int[] Mercados = db.ESTOQUE.Select(x => x.MERCADO_ID).Distinct().ToArray();
+            List<MERCADOS> mercados_detalhes = db.MERCADOS.ToList();
 
             foreach (int itemMercado in Mercados)
             {

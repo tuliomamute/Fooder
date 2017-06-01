@@ -21,6 +21,6 @@ namespace Fooder.WebApi.Models
         /// <summary>
         /// Soma do valor dos produtos de um supermercado
         /// </summary>
-        public double PrecoTotal { get; set; }
+        public decimal? PrecoTotal { get; set; }
     }
 }

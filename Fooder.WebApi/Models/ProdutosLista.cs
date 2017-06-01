@@ -10,6 +10,10 @@ namespace Fooder.WebApi.Models
     /// </summary>
     public class ProdutosLista
     {
+        public ProdutosLista()
+        {
+
+        }
         /// <summary>
         /// Código do Produto
         /// </summary>
