@@ -41,3 +41,15 @@ namespace Fooder.WebApi.Controllers
         }
     }
 }
+
+//{
+//	"ListaProdutos": [{
+//		"CodigoProduto": 0,
+//		"CodigoLista": 0,
+//		"QuantidadeProduto": 0
+//	}, {
+//		"CodigoProduto": 1,
+//		"CodigoLista": 0,
+//		"QuantidadeProduto": 3
+//	}]
+//}
