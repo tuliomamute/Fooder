@@ -26,36 +26,88 @@ namespace Fooder.WebApi.Controllers
         [HttpPost]
         public IHttpActionResult Get(ProdutosLista[] ListaProdutos)
         {
+            return Ok(ProcessaSupermercados(ListaProdutos));
+        }
 
-            int[] CodigoProdutos = ListaProdutos.Select(x => x.CodigoProduto).Distinct().ToArray();
+        /// <summary>
+        /// Método que realiza processamento das listas.
+        /// </summary>
+        /// <param name="ListaProdutos"></param>
+        /// <returns></returns>
+        private List<ClassificacaoMercados> ProcessaSupermercados(ProdutosLista[] ListaProdutos)
+        {
+            List<MERCADOS> SuperMercados = db.MERCADOS.ToList();
+            List<ESTOQUE> Estoque = null;
+            List<DetalhesProdutos> ListaDetails = null;
+            ProdutosLista itemProdutoLista = null;
+            List<ClassificacaoMercados> ClassificacaoMercado = null;
 
-            List<ESTOQUE> elementos_estoque = db.ESTOQUE.Where(x => CodigoProdutos.Contains(x.PRODUTO_ID)).ToList();
-            int[] Mercados = db.ESTOQUE.Select(x => x.MERCADO_ID).Distinct().ToArray();
-            List<MERCADOS> mercados_detalhes = db.MERCADOS.ToList();
-            List<ClassificacaoMercados> Classificacao = new List<ClassificacaoMercados>();
-            foreach (int itemMercado in Mercados)
+            ClassificacaoMercado = new List<ClassificacaoMercados>();
+
+            foreach (MERCADOS item in SuperMercados)
             {
-                Classificacao.Add(elementos_estoque.Where(x => x.MERCADO_ID == itemMercado)
-                                   .Join(ListaProdutos, a => a.PRODUTO_ID, b => b.CodigoProduto, (a, b) => new { SomaProduto = a.PRECO * b.QuantidadeProduto, Produto = a.PRODUTO_ID, Mercado = a.MERCADO_ID })
-                                   .GroupBy(a => a.Mercado)
-                                   .Select(x => new { CodigoMercado = x.FirstOrDefault().Mercado, SomaProdutos = x.Sum(y => y.SomaProduto) })
-                                   .Join(mercados_detalhes, a => a.CodigoMercado, b => b.MERCADO_ID, (a, b) => new ClassificacaoMercados { NomeSupermercado = b.NOME, PrecoTotal = a.SomaProdutos, UrlMapa = b.URL_MAPA }).FirstOrDefault());
+                ListaDetails = new List<DetalhesProdutos>();
 
+                //Busca os estoques de um supermercado
+                Estoque = db.ESTOQUE.Where(x => x.MERCADO_ID == item.MERCADO_ID).ToList();
+
+                //Interações nos produtos encontrados para um supermercado
+                foreach (ESTOQUE itemEstoque in Estoque)
+                {
+                    itemProdutoLista = ListaProdutos.Where(x => x.CodigoProduto == itemEstoque.PRODUTO_ID).FirstOrDefault();
+
+                    //Se algum produto escolhido no aplicativo estiver na lista, calcula-se o valor, caso o contrário, ele assume o valor 0.
+                    //Refazer trecho, para quando não for encontrado, adicionar com valor zerado
+
+                    //if (itemProdutoLista != null)
+                    //    ListaDetails.Add(new DetalhesProdutos()
+                    //    {
+                    //        SomaProduto = itemProdutoLista.QuantidadeProduto * itemEstoque.PRECO,
+                    //        ProdutoId = itemEstoque.PRODUTO_ID,
+                    //        NomeProduto = db.PRODUTOS.Where(x => x.PRODUTO_ID == itemEstoque.PRODUTO_ID).FirstOrDefault().NOME
+                    //    });
+                    //else
+                    //    
+                    //    ListaDetails.Add(new DetalhesProdutos()
+                    //    {
+                    //        SomaProduto = 0,
+                    //        ProdutoId = itemEstoque.PRODUTO_ID,
+                    //        NomeProduto = db.PRODUTOS.Where(x => x.PRODUTO_ID == itemEstoque.PRODUTO_ID).FirstOrDefault().NOME
+                    //    });
+                }
+
+                //Criação do Objeto de Supermercado
+                ClassificacaoMercado.Add(new ClassificacaoMercados()
+                {
+                    DetalhesProdutos = ListaDetails,
+                    NomeSupermercado = item.NOME,
+                    UrlMapa = item.URL_MAPA,
+                    PrecoTotal = ListaDetails.Sum(x => x.SomaProduto),
+                    ListaCompleta = ListaDetails.Count == Estoque.Count
+                });
             }
 
-            return Ok(Classificacao);
+            return ClassificacaoMercado;
         }
+
     }
 }
 
-//{
-//	"ListaProdutos": [{
-//		"CodigoProduto": 0,
-//		"CodigoLista": 0,
-//		"QuantidadeProduto": 0
-//	}, {
-//		"CodigoProduto": 1,
-//		"CodigoLista": 0,
-//		"QuantidadeProduto": 3
-//	}]
+//[{
+//	"CodigoProduto": 0,
+//	"CodigoLista": 0,
+//	"QuantidadeProduto": 2
+//}, {
+//	"CodigoProduto": 1,
+//	"CodigoLista": 0,
+//	"QuantidadeProduto": 3
+//}, {
+//	"CodigoProduto": 2,
+//	"CodigoLista": 0,
+//	"QuantidadeProduto": 4
+//}, {
+//	"CodigoProduto": 3,
+//	"CodigoLista": 0,
+//	"QuantidadeProduto": 5
 //}
+//]
