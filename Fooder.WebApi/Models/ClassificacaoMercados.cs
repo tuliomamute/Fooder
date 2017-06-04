@@ -30,6 +30,10 @@ namespace Fooder.WebApi.Models
         /// Lista dos produtos de um mercado
         /// </summary>
         public List<DetalhesProdutos> DetalhesProdutos { get; set; }
+        /// <summary>
+        /// Quantidade de itens encontrados a partir da lista de produtos informados
+        /// </summary>
+        public int QuantidadeItensEncontrados { get; set; }
     }
     /// <summary>
     /// Detalhes dos produtos de um determinado supermercado
