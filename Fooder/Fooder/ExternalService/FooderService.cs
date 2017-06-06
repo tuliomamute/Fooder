@@ -13,9 +13,9 @@ namespace Fooder.ExternalService
 {
     public static class FooderService
     {
-        public static async Task<List<ClassificacaoMercados>> RetornaClassificacoes(ProdutosLista[] ListaProdutos)
+        public static async Task<ObservableCollection<ClassificacaoMercados>> RetornaClassificacoes(List<ProdutosLista> ListaProdutos)
         {
-            List<ClassificacaoMercados> model = null;
+            ObservableCollection<ClassificacaoMercados> model = null;
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -29,7 +29,7 @@ namespace Fooder.ExternalService
                     HttpResponseMessage response = await client.PostAsync($"/api/ClassificacaoSupermercados/", stringContent);
 
                     if (response.IsSuccessStatusCode)
-                        model = JsonConvert.DeserializeObject<List<ClassificacaoMercados>>(await response.Content.ReadAsStringAsync());
+                        model = JsonConvert.DeserializeObject<ObservableCollection<ClassificacaoMercados>>(await response.Content.ReadAsStringAsync());
 
                     return model;
                 }

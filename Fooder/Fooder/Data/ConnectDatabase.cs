@@ -63,9 +63,9 @@ namespace Fooder.Data
         #endregion
 
         #region Metodos Classe ProdutoLista
-        public Task<List<ProdutosLista>> ProdutoLista_GetItemsAsync()
+        public Task<List<ProdutosLista>> ProdutoLista_GetItemsAsync(int CodigoLista)
         {
-            return data.Table<ProdutosLista>().ToListAsync();
+            return data.Table<ProdutosLista>().Where(x => x.CodigoLista == CodigoLista).ToListAsync();
         }
 
         public Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)

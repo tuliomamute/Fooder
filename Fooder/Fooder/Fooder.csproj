@@ -42,7 +42,7 @@
     <Compile Include="ExternalService\FooderService.cs" />
     <Compile Include="GlobalClasses\GlobalProperties.cs" />
     <Compile Include="Interfaces\DependencyService\IFileHelper.cs" />
-    <Compile Include="Model\ClassificacaoSupermercado.cs" />
+    <Compile Include="Model\ClassificacaoMercados.cs" />
     <Compile Include="Model\Lista.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\ProdutosLista.cs" />
@@ -50,6 +50,7 @@
     <Compile Include="UtilityClass\MasterPageItem.cs" />
     <Compile Include="ViewModel\AssociacaoProdutosListaPageViewModel.cs" />
     <Compile Include="ViewModel\CriarListaPageViewModel.cs" />
+    <Compile Include="ViewModel\ExibicaoSupermercadosClassificacaoViewModel.cs" />
     <Compile Include="ViewModel\ListasCadastradasPageViewModel.cs" />
     <Compile Include="Views\AssociacaoProdutosListaPage.xaml.cs">
       <DependentUpon>AssociacaoProdutosListaPage.xaml</DependentUpon>
@@ -59,6 +60,9 @@
     </Compile>
     <Compile Include="Views\DadosIniciaisPage.xaml.cs">
       <DependentUpon>DadosIniciaisPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExibicaoSupermercadosClassificacao.xaml.cs">
+      <DependentUpon>ExibicaoSupermercadosClassificacao.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListasCadastradasPage.xaml.cs">
       <DependentUpon>ListasCadastradasPage.xaml</DependentUpon>
@@ -150,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AssociacaoProdutosListaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ExibicaoSupermercadosClassificacao.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

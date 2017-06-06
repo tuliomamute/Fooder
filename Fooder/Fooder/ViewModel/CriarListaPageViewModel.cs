@@ -20,15 +20,15 @@ namespace Fooder.ViewModel
         {
             Navigation = nav;
             objLista = new Lista();
-            Navigate = new Command(() => FindSummoner());
+            Navigate = new Command(() => SalvarListaBaseDados());
         }
         public CriarListaPageViewModel(INavigation nav, Lista listaobjetos)
         {
             Navigation = nav;
             objLista = listaobjetos;
-            Navigate = new Command(() => FindSummoner());
+            Navigate = new Command(() => SalvarListaBaseDados());
         }
-        private async void FindSummoner()
+        private async void SalvarListaBaseDados()
         {
             await App.Database.Lista_SaveItemAsync(objLista);
             await Navigation.PopAsync();

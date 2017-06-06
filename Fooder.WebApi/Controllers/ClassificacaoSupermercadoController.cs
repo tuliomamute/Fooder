@@ -24,7 +24,7 @@ namespace Fooder.WebApi.Controllers
         /// <returns></returns>
         [ResponseType(typeof(List<ClassificacaoMercados>))]
         [HttpPost]
-        public IHttpActionResult Post(ProdutosLista[] ListaProdutos)
+        public IHttpActionResult Post(List<ProdutosLista> ListaProdutos)
         {
             return Ok(ProcessaSupermercados(ListaProdutos));
         }
@@ -34,7 +34,7 @@ namespace Fooder.WebApi.Controllers
         /// </summary>
         /// <param name="ListaProdutos"></param>
         /// <returns>Lista de Classificação dos preços do supermercados cadastrados</returns>
-        private List<ClassificacaoMercados> ProcessaSupermercados(ProdutosLista[] ListaProdutos)
+        private List<ClassificacaoMercados> ProcessaSupermercados(List<ProdutosLista> ListaProdutos)
         {
             List<MERCADOS> SuperMercados = db.MERCADOS.ToList();
             List<ESTOQUE> Estoque = null;

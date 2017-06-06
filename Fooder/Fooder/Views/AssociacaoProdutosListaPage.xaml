@@ -5,7 +5,7 @@
              Title="Associar Produtos">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Fooder" Command="{Binding SalvarProdutosLista}">
+        <ToolbarItem Text="Salvar" Command="{Binding SalvarProdutosLista}">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
