@@ -24,7 +24,7 @@ namespace Fooder.WebApi.Controllers
         /// <returns></returns>
         [ResponseType(typeof(List<ClassificacaoMercados>))]
         [HttpPost]
-        public IHttpActionResult Get(ProdutosLista[] ListaProdutos)
+        public IHttpActionResult Post(ProdutosLista[] ListaProdutos)
         {
             return Ok(ProcessaSupermercados(ListaProdutos));
         }
