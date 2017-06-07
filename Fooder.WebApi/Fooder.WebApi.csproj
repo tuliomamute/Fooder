@@ -166,6 +166,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706070121034_FirstCommit.cs" />
+    <Compile Include="Migrations\201706070121034_FirstCommit.Designer.cs">
+      <DependentUpon>201706070121034_FirstCommit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CATEGORIAS.cs" />
     <Compile Include="Models\ClassificacaoMercados.cs" />
     <Compile Include="Models\ESTOQUE.cs" />
@@ -197,6 +202,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706070121034_FirstCommit.resx">
+      <DependentUpon>201706070121034_FirstCommit.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FooderApi - Web Deploy.pubxml" />
