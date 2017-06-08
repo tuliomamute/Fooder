@@ -61,8 +61,8 @@
     <Compile Include="Views\DadosIniciaisPage.xaml.cs">
       <DependentUpon>DadosIniciaisPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExibicaoSupermercadosClassificacao.xaml.cs">
-      <DependentUpon>ExibicaoSupermercadosClassificacao.xaml</DependentUpon>
+    <Compile Include="Views\ExibicaoSupermercadosClassificacaoPage.xaml.cs">
+      <DependentUpon>ExibicaoSupermercadosClassificacaoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListasCadastradasPage.xaml.cs">
       <DependentUpon>ListasCadastradasPage.xaml</DependentUpon>
@@ -159,7 +159,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ExibicaoSupermercadosClassificacao.xaml">
+    <EmbeddedResource Include="Views\ExibicaoSupermercadosClassificacaoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

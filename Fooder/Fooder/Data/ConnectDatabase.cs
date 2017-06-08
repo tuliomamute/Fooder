@@ -65,15 +65,16 @@ namespace Fooder.Data
         #region Metodos Classe ProdutoLista
         public Task<List<ProdutosLista>> ProdutoLista_GetItemsAsync(int CodigoLista)
         {
+            List<ProdutosLista> abc = data.Table<ProdutosLista>().Where(x => x.CodigoLista == CodigoLista).ToListAsync().Result;
             return data.Table<ProdutosLista>().Where(x => x.CodigoLista == CodigoLista).ToListAsync();
         }
 
         public Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)
         {
-            if (item.CodigoLista != 0)
-                return data.UpdateAsync(item);
-            else
+            if (data.Table<ProdutosLista>().Where(x => x.CodigoLista == item.CodigoLista && x.CodigoProduto == item.CodigoProduto).CountAsync().Result == 0)
                 return data.InsertAsync(item);
+            else
+                return data.UpdateAsync(item);
             #endregion
         }
     }

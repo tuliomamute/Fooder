@@ -8,6 +8,6 @@ namespace Fooder.GlobalClasses
 {
     public static class GlobalProperties
     {
-        public const string UrlApi = "http://xamarinlolwebapi.azurewebsites.net";
+        public const string UrlApi = "http://fooderapi.azurewebsites.net";
     }
 }

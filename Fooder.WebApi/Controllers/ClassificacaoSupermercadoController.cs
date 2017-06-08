@@ -26,7 +26,14 @@ namespace Fooder.WebApi.Controllers
         [HttpPost]
         public IHttpActionResult Post(List<ProdutosLista> ListaProdutos)
         {
-            return Ok(ProcessaSupermercados(ListaProdutos));
+            try
+            {
+                return Ok(ProcessaSupermercados(ListaProdutos));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
         }
 
         /// <summary>

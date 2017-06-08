@@ -24,9 +24,9 @@ namespace Fooder.ExternalService
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    var stringContent = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+                    var stringContent = new StringContent(JsonConvert.SerializeObject(ListaProdutos), Encoding.UTF8, "application/json");
 
-                    HttpResponseMessage response = await client.PostAsync($"/api/ClassificacaoSupermercados/", stringContent);
+                    HttpResponseMessage response = await client.PostAsync($"/api/ClassificacaoSupermercado/", stringContent);
 
                     if (response.IsSuccessStatusCode)
                         model = JsonConvert.DeserializeObject<ObservableCollection<ClassificacaoMercados>>(await response.Content.ReadAsStringAsync());

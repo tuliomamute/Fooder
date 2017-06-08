@@ -35,13 +35,13 @@ namespace Fooder.Views
                 TargetType = typeof(ListasCadastradasPage)
             });
 
-            //masterPageItem.Add(new MasterPageItem
-            //{
-            //    Titulo = "Menor Preço",
-            //    Imagem = "icon.png",
-            //    Detalhes = "Encontre o Supermercado com Menor Preço",
-            //    TargetType = typeof(ListasCadastradasPage)
-            //});
+            masterPageItem.Add(new MasterPageItem
+            {
+                Titulo = "Menor Preço",
+                Imagem = "icon.png",
+                Detalhes = "Encontre o Supermercado com Menor Preço",
+                TargetType = typeof(ExibicaoSupermercadosClassificacaoPage)
+            });
 
             lstPaginas.ItemsSource = masterPageItem;
         }
