@@ -22,7 +22,7 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding NomeSupermercado}"></Label>
                                 <Label Text="{Binding PrecoTotal}"></Label>
-                                <Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" CommandParameter="{Binding UrlMapa}" Command="{Binding RedirecionarMapa}" Clicked="Button_Clicked" Text="Mapa"/>
+                                <Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" CommandParameter="2" Command="{Binding RedirecionarMapa}" Clicked="Button_Clicked" Text="Mapa"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
