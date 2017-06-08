@@ -110,7 +110,7 @@ namespace Fooder.WebApi.Controllers
             }
 
             //Ordenação baseado se alguma lista foi encontrada completa e depois pela quantidade de itens encontrados
-            ClassificacaoMercado = ClassificacaoMercado.OrderByDescending(x => x.ListaCompleta).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
+            ClassificacaoMercado = ClassificacaoMercado.OrderByDescending(x => x.ListaCompleta).OrderBy(x=>x.PrecoTotal).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
 
             return ClassificacaoMercado;
         }
