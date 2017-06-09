@@ -1,4 +1,5 @@
-﻿using Fooder.ViewModel;
+﻿using Fooder.Model;
+using Fooder.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,9 +32,12 @@ namespace Fooder.Views
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void LstClassificacaoSupermercados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var item = e.SelectedItem as ClassificacaoMercados;
 
+            if (item != null)
+                Device.OpenUri(new Uri(item.UrlMapa));
         }
     }
 

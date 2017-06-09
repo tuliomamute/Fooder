@@ -22,12 +22,20 @@ namespace Fooder.ViewModel
         public Lista ListaSelecionada { get; set; }
         public ExibicaoSupermercadosClassificacaoViewModel()
         {
+            try
+            {
+                BuscarElementos = new Command(() => BuscarClassificacao());
+                //RedirecionarMapa = new Command<ClassificacaoMercados>((key) => TelaDetalhesProduto(key));
+                //RedirecionarMapa = new Command<ClassificacaoMercados>(TelaDetalhesProduto);
 
-            BuscarElementos = new Command(() => BuscarClassificacao());
+                LstMercados = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
+            }
+            catch (Exception ex)
+            {
 
-            this.RedirecionarMapa = new Command<string>((key) => Device.OpenUri(new Uri(key)));
+                throw ex;
+            }
 
-            LstMercados = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
         }
 
         private async void BuscarClassificacao()
@@ -38,6 +46,18 @@ namespace Fooder.ViewModel
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+        private void TelaDetalhesProduto(ClassificacaoMercados mercados)
+        {
+            try
+            {
+                var a = mercados.UrlMapa;
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }

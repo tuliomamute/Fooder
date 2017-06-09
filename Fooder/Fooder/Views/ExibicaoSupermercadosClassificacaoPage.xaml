@@ -15,14 +15,15 @@
             <Picker ItemsSource="{Binding LstMercados}" SelectedItem="{Binding ListaSelecionada, Mode=TwoWay}" ItemDisplayBinding="{Binding NomeLista}"></Picker>
         </StackLayout>
         <ScrollView>
-            <ListView x:Name="LstClassificacaoSupermercados" ItemsSource="{Binding ListaClassificacaoSupermercados}">
+            <ListView x:Name="LstClassificacaoSupermercados" ItemsSource="{Binding ListaClassificacaoSupermercados}" ItemSelected="LstClassificacaoSupermercados_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding NomeSupermercado}"></Label>
                                 <Label Text="{Binding PrecoTotal}"></Label>
-                                <Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" CommandParameter="2" Command="{Binding RedirecionarMapa}" Clicked="Button_Clicked" Text="Mapa"/>
+                                <!--<Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" Image="icon.png" BackgroundColor="Transparent" CommandParameter="{Binding}" Command="{Binding RedirecionarMapa}" BorderColor="Transparent"/>-->
+                                <!--<Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" Image="icon.png" BackgroundColor="Transparent" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" Command="{Binding RedirecionarMapa}" BorderColor="Transparent"/>-->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
