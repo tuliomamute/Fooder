@@ -9,6 +9,7 @@ using Fooder.Model;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Fooder.ExternalService;
+using Fooder.Views;
 
 namespace Fooder.ViewModel
 {
@@ -18,15 +19,17 @@ namespace Fooder.ViewModel
         public ObservableCollection<ClassificacaoMercados> ListaClassificacaoSupermercados { get; set; }
         public ObservableCollection<Lista> LstMercados { get; set; }
         public ICommand BuscarElementos { get; set; }
-        public ICommand RedirecionarMapa { get; set; }
+        public ICommand RedirecionarMapa { get; private set; }
+        public INavigation Navigation { get; set; }
         public Lista ListaSelecionada { get; set; }
-        public ExibicaoSupermercadosClassificacaoViewModel()
+
+        public ExibicaoSupermercadosClassificacaoViewModel(INavigation nav)
         {
             try
             {
+                Navigation = nav;
                 BuscarElementos = new Command(() => BuscarClassificacao());
-                //RedirecionarMapa = new Command<ClassificacaoMercados>((key) => TelaDetalhesProduto(key));
-                //RedirecionarMapa = new Command<ClassificacaoMercados>(TelaDetalhesProduto);
+                RedirecionarMapa = new Command<ClassificacaoMercados>(key => TelaDetalhesProduto(key));
 
                 LstMercados = new ObservableCollection<Lista>(App.Database.Lista_GetItemsAsync().Result);
             }
@@ -53,7 +56,7 @@ namespace Fooder.ViewModel
         {
             try
             {
-                var a = mercados.UrlMapa;
+                Navigation.PushAsync(new DetalhesProdutosPage(mercados));
             }
             catch (Exception ex)
             {

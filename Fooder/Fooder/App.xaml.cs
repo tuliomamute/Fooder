@@ -7,9 +7,11 @@ using Xamarin.Forms;
 using Fooder.Interfaces.DependencyService;
 using Fooder.Data;
 using Fooder.Model;
+using Xamarin.Forms.Xaml;
 
 namespace Fooder
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
     {
         static ConnectDatabase database;

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fooder.Views.ExibicaoSupermercadosClassificacaoPage"
+             x:Name="ExibicaoSupermercadosClassificacaoPage"
              Title="Classificação Supermercados">
 
     <ContentPage.ToolbarItems>
@@ -22,8 +23,7 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding NomeSupermercado}"></Label>
                                 <Label Text="{Binding PrecoTotal}"></Label>
-                                <!--<Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" Image="icon.png" BackgroundColor="Transparent" CommandParameter="{Binding}" Command="{Binding RedirecionarMapa}" BorderColor="Transparent"/>-->
-                                <!--<Button BindingContext="{Binding Source={x:Reference LstClassificacaoSupermercados}, Path=BindingContext}" Image="icon.png" BackgroundColor="Transparent" CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" Command="{Binding RedirecionarMapa}" BorderColor="Transparent"/>-->
+                                <Button Text="Detalhes" Command="{Binding Path=BindingContext.RedirecionarMapa, Source={x:Reference ExibicaoSupermercadosClassificacaoPage}}" CommandParameter="{Binding .}"></Button>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -23,7 +23,7 @@ namespace Fooder.Views
             try
             {
                 InitializeComponent();
-                BindingContext = new ExibicaoSupermercadosClassificacaoViewModel();
+                BindingContext = new ExibicaoSupermercadosClassificacaoViewModel(this.Navigation);
             }
             catch (Exception ex)
             {
