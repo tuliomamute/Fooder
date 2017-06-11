@@ -2,4 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fooder.Views.DetalhesProdutosPage">
+    <StackLayout>
+        <Label Text="{Binding mercado.NomeSupermercado}"></Label>
+        <Label Text="Produtos Não Encontrados" IsVisible="{Binding VisivelNaoEncontrados}"></Label>
+
+        <ScrollView IsVisible="{Binding VisivelNaoEncontrados}">
+            <ListView IsVisible="{Binding VisivelNaoEncontrados}" ItemsSource="{Binding ProdutosNaoEncontrados}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeProduto}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Label Text="Produtos Encontrados" IsVisible="{Binding VisivelEncontrados}"></Label>
+
+        <ScrollView IsVisible="{Binding VisivelEncontrados}">
+            <ListView IsVisible="{Binding VisivelEncontrados}" ItemsSource="{Binding ProdutosEncontrados}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding NomeProduto}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+    </StackLayout>
 </ContentPage>
