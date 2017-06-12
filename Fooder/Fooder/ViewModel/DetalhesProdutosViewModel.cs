@@ -24,7 +24,7 @@ namespace Fooder.ViewModel
 
             VisivelEncontrados = ProdutosEncontrados.Count > 0;
             VisivelNaoEncontrados = ProdutosNaoEncontrados.Count > 0;
-
+            //aaaa
         }
     }
 }
