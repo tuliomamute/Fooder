@@ -12,6 +12,12 @@
 
     <StackLayout>
 
+        <!--<Grid Grid.RowSpan="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="{Binding Loading}">
+            <BoxView BackgroundColor="Black" Opacity="0.65" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+        </Grid>-->
+
+        <ActivityIndicator IsRunning="{Binding Loading}" IsVisible="{Binding Loading}" WidthRequest="80" HorizontalOptions="Center" VerticalOptions="Center"/>
+
         <StackLayout Padding="10">
             <Picker ItemsSource="{Binding LstMercados}" SelectedItem="{Binding ListaSelecionada, Mode=TwoWay}" ItemDisplayBinding="{Binding NomeLista}"></Picker>
         </StackLayout>

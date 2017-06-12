@@ -22,7 +22,7 @@ namespace Fooder.ViewModel
         public ICommand RedirecionarMapa { get; private set; }
         public INavigation Navigation { get; set; }
         public Lista ListaSelecionada { get; set; }
-
+        public bool Carregando { get; set; }
         public ExibicaoSupermercadosClassificacaoViewModel(INavigation nav)
         {
             try
@@ -45,7 +45,13 @@ namespace Fooder.ViewModel
         {
             try
             {
+                Carregando = true;
+
                 ListaClassificacaoSupermercados = await FooderService.RetornaClassificacoes(await App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista));
+
+                if (ListaClassificacaoSupermercados.Count > 0)
+                    Carregando = false;
+
             }
             catch (Exception ex)
             {

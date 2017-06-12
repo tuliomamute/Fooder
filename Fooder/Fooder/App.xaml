@@ -2,7 +2,15 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fooder.App">
-	<Application.Resources>
-		<!-- Application resource dictionary -->
-	</Application.Resources>
+    <Application.Resources>
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style TargetType="ListView">
+                <Setter Property="Margin" Value="10,0,10,0" />
+            </Style>
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="Green"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

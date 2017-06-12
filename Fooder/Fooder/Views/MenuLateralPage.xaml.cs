@@ -30,7 +30,7 @@ namespace Fooder.Views
             masterPageItem.Add(new MasterPageItem
             {
                 Titulo = "Listas Inclusas",
-                Imagem = "icon.png",
+                Imagem = "ic_list.png",
                 Detalhes = "Gerencie suas listas",
                 TargetType = typeof(ListasCadastradasPage)
             });
@@ -38,8 +38,8 @@ namespace Fooder.Views
             masterPageItem.Add(new MasterPageItem
             {
                 Titulo = "Menor Preço",
-                Imagem = "icon.png",
-                Detalhes = "Encontre o Supermercado com Menor Preço",
+                Imagem = "ic_buy.png",
+                Detalhes = "Encontre o Menor Preço",
                 TargetType = typeof(ExibicaoSupermercadosClassificacaoPage)
             });
 
