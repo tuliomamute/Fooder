@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Fooder.Model;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using Fooder.GlobalClasses;
 
 namespace Fooder.ViewModel
 {
@@ -53,6 +54,7 @@ namespace Fooder.ViewModel
 
                 App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
+            DisplayMessage.DisplayMessageAlert("Confirmação", "Produtos Incluidos na Lista com Sucesso!");
         }
     }
 }

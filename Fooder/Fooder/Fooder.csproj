@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Data\ConnectDatabase.cs" />
     <Compile Include="ExternalService\FooderService.cs" />
+    <Compile Include="GlobalClasses\DisplayMessage.cs" />
     <Compile Include="GlobalClasses\GlobalProperties.cs" />
     <Compile Include="Interfaces\DependencyService\IFileHelper.cs" />
     <Compile Include="Model\ClassificacaoMercados.cs" />

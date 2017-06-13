@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fooder.Views.ExibicaoSupermercadosClassificacaoPage"
              x:Name="ExibicaoSupermercadosClassificacaoPage"
-             Title="Classificação Supermercados">
+             Title="Menor Preço">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Fooder!" Command="{Binding BuscarElementos}">

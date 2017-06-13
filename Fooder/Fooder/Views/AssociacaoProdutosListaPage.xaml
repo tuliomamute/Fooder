@@ -10,12 +10,11 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <StackLayout Padding="10">
-            <Label Text="Código Lista: "></Label>
-            <Label Text="{Binding ListaSelecionada.CodigoLista}"></Label>
-            <Label Text="Nome Lista: "></Label>
-            <Entry Text="{Binding ListaSelecionada.NomeLista}"></Entry>
+
+        <StackLayout Spacing="0">
+            <Entry Text="{Binding ListaSelecionada.NomeLista}" Placeholder="Nome Lista" HorizontalOptions="FillAndExpand"></Entry>
         </StackLayout>
+        
         <ScrollView>
             <ListView x:Name="LstProdutosCadastrados" ItemsSource="{Binding ListaProdutos}" SeparatorVisibility="Default" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
                 <ListView.ItemTemplate>
@@ -23,7 +22,7 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding NomeProduto}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                <Entry Keyboard="Numeric" HorizontalOptions="End" Text="{Binding QuantidadeProduto}"></Entry>
+                                <Entry WidthRequest="50" max Keyboard="Numeric" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" Text="{Binding QuantidadeProduto}"></Entry>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
