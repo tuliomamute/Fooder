@@ -32,9 +32,16 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding NomeSupermercado}"></Label>
-                                    <Label Text="{Binding PrecoTotal}"></Label>
-                                    <Button Text="Detalhes" Command="{Binding Path=BindingContext.RedirecionarMapa, Source={x:Reference ExibicaoSupermercadosClassificacaoPage}}" CommandParameter="{Binding .}"></Button>
+                                    <StackLayout>
+                                        <Label Text="{Binding NomeSupermercado}"></Label>
+                                        <Label Text="{Binding PrecoTotal}"></Label>
+                                    </StackLayout>
+
+                                    <Image Source="icon.png" HorizontalOptions="EndAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.RedirecionarMapa, Source={x:Reference ExibicaoSupermercadosClassificacaoPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
