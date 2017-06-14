@@ -16,6 +16,7 @@ namespace Fooder.ViewModel
     [ImplementPropertyChanged]
     public class AssociacaoProdutosListaPageViewModel
     {
+        public ICommand RecuperarQuantidade { get; set; }
         public ICommand SalvarProdutosLista { get; set; }
         public Lista ListaSelecionada { get; set; }
         public ObservableCollection<ProdutoQuantidade> ListaProdutos { get; set; }
@@ -28,7 +29,9 @@ namespace Fooder.ViewModel
                 var serializedParent = JsonConvert.SerializeObject(App.Database.Produto_GetItemsAsync().Result);
                 ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
 
-                SalvarProdutosLista = new Command(() => PersistirElementosBaseDados());
+                RecuperarListaBancoLocal();
+
+                SalvarProdutosLista = new Command(() => PersistirElementosBaseDadosAsync());
             }
             catch (Exception ex)
             {
@@ -37,13 +40,23 @@ namespace Fooder.ViewModel
             }
         }
 
-        private void PersistirElementosBaseDados()
+        private void RecuperarListaBancoLocal()
+        {
+            var retorno = App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista).Result;
+
+            //Preenchimento da lista de produtos para ser escrita na tela
+            foreach (var item in retorno)
+                ListaProdutos.Where(x => x.CodigoProduto == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
+
+        }
+
+        private async void PersistirElementosBaseDadosAsync()
         {
             ProdutosLista prodlist = null;
             prodlist = new ProdutosLista();
 
             //Salvando Lista, caso tenha alterado algo
-            App.Database.Lista_SaveItemAsync(ListaSelecionada);
+            await App.Database.Lista_SaveItemAsync(ListaSelecionada);
 
             //Percorrendo Lista de Produtos
             foreach (ProdutoQuantidade item in ListaProdutos.Where(x => x.QuantidadeProduto > 0))
@@ -52,8 +65,9 @@ namespace Fooder.ViewModel
                 prodlist.CodigoLista = ListaSelecionada.CodigoLista;
                 prodlist.QuantidadeProduto = item.QuantidadeProduto;
 
-                App.Database.ProdutoLista_SaveItemAsync(prodlist);
+                await App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
+
             DisplayMessage.DisplayMessageAlert("Confirmação", "Produtos Incluidos na Lista com Sucesso!");
         }
     }

@@ -69,12 +69,12 @@ namespace Fooder.Data
             return data.Table<ProdutosLista>().Where(x => x.CodigoLista == CodigoLista).ToListAsync();
         }
 
-        public Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)
+        public async Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)
         {
             if (data.Table<ProdutosLista>().Where(x => x.CodigoLista == item.CodigoLista && x.CodigoProduto == item.CodigoProduto).CountAsync().Result == 0)
-                return data.InsertAsync(item);
+                return await data.InsertAsync(item);
             else
-                return data.UpdateAsync(item);
+                return await data.UpdateAsync(item);
             #endregion
         }
     }
