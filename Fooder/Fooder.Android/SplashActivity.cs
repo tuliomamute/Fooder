@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Fooder.Droid
 {
-    [Activity(Label = "Fooder", Icon = "@drawable/icon", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "Fooder", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
