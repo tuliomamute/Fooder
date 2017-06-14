@@ -2,5 +2,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.INTERNET" />
-	<application android:label="Fooder" android:logo="@drawable/ic_launcher_transparente" android:icon="@drawable/ic_launcher"></application>
+	<application android:label="Fooder" android:icon="@drawable/ic_launcher"></application>
 </manifest>
