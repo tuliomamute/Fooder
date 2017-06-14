@@ -9,7 +9,7 @@
             1</ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="LstProdutosCadastradas" SeparatorVisibility="Default" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
+    <ListView x:Name="LstProdutosCadastradas" SeparatorVisibility="Default" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

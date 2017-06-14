@@ -15,7 +15,6 @@ namespace Fooder.ViewModel
     public class ListasCadastradasPageViewModel
     {
         public ObservableCollection<Lista> ListaObjetos { get; set; }
-        public bool Refresh { get; set; }
         public ICommand GetRefreshedHistory { get; set; }
         public ListasCadastradasPageViewModel()
         {
@@ -23,9 +22,7 @@ namespace Fooder.ViewModel
         }
         public async void BuscaListaDatabase()
         {
-            Refresh = true;
             ListaObjetos = new ObservableCollection<Lista>(await App.Database.Lista_GetItemsAsync());
-            Refresh = false;
         }
     }
 

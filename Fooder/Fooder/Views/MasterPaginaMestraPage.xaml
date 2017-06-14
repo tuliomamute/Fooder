@@ -11,7 +11,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <local:DadosIniciaisPage></local:DadosIniciaisPage>
+                <local:ListasCadastradasPage></local:ListasCadastradasPage>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

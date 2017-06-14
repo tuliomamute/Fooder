@@ -21,7 +21,7 @@ namespace Fooder.Views
         {
             menu = new MenuLateralPage();
             Master = menu;
-            Detail = new NavigationPage(new DadosIniciaisPage());
+            Detail = new NavigationPage(new ListasCadastradasPage());
             menu.ListPaginas.ItemSelected += OnItemSelected;
         }
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
