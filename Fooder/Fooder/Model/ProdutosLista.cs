@@ -10,10 +10,13 @@ namespace Fooder.Model
 
     public class ProdutosLista
     {
-        [Indexed(Name = "CodigoProduto", Order = 1, Unique = true)]
+        [PrimaryKey, AutoIncrement]
+        public int SequencialProdutoLista { get; set; }
+
+        //[Indexed(Name = "CodigoProduto", Order = 1, Unique = true)]
         public int CodigoProduto { get; set; }
 
-        [Indexed(Name = "CodigoProduto", Order = 2, Unique = true)]
+        //[Indexed(Name = "CodigoLista", Order = 2, Unique = true)]
         public int CodigoLista { get; set; }
 
         public int QuantidadeProduto { get; set; }

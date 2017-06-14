@@ -71,11 +71,20 @@ namespace Fooder.Data
 
         public async Task<int> ProdutoLista_SaveItemAsync(ProdutosLista item)
         {
-            if (data.Table<ProdutosLista>().Where(x => x.CodigoLista == item.CodigoLista && x.CodigoProduto == item.CodigoProduto).CountAsync().Result == 0)
-                return await data.InsertAsync(item);
-            else
-                return await data.UpdateAsync(item);
-            #endregion
+            try
+            {
+                if (data.Table<ProdutosLista>().Where(x => x.CodigoLista == item.CodigoLista && x.CodigoProduto == item.CodigoProduto).CountAsync().Result == 0)
+                    return await data.InsertAsync(item);
+                else
+                    return await data.UpdateAsync(item);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
