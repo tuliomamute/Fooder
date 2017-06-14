@@ -1955,7 +1955,7 @@ namespace Fooder.Droid
 			public const int FooderLogoNoBG = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int FooderLogoNoBGSH = 2130837582;
+			public const int FooderLogoNoBHSG = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
 			public const int ic_audiotrack = 2130837583;
