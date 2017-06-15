@@ -21,7 +21,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding NomeProduto}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Label FontSize="18" Text="{Binding NomeProduto}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
                                 <Entry WidthRequest="50" Keyboard="Numeric" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" Text="{Binding QuantidadeProduto}"></Entry>
                             </StackLayout>
                         </ViewCell>

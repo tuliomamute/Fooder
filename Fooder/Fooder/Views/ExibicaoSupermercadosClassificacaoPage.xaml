@@ -27,17 +27,17 @@
             </StackLayout>
 
             <ScrollView Grid.Row="1">
-                <ListView x:Name="LstClassificacaoSupermercados" ItemsSource="{Binding ListaClassificacaoSupermercados}" ItemSelected="LstClassificacaoSupermercados_ItemSelected">
+                <ListView x:Name="LstClassificacaoSupermercados" SeparatorColor="Black" ItemsSource="{Binding ListaClassificacaoSupermercados}" ItemSelected="LstClassificacaoSupermercados_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" >
                                     <StackLayout>
                                         <Label Text="{Binding NomeSupermercado}"></Label>
                                         <Label Text="{Binding PrecoTotal}"></Label>
                                     </StackLayout>
 
-                                    <Image Source="icon.png" HorizontalOptions="EndAndExpand">
+                                    <Image Source="list_icon.png" HorizontalOptions="EndAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Path=BindingContext.RedirecionarMapa, Source={x:Reference ExibicaoSupermercadosClassificacaoPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>

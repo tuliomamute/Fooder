@@ -13,7 +13,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Label Text="{Binding NomeLista}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                    <Label Text="{Binding NomeLista}" FontSize="18" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

@@ -21,7 +21,7 @@
                 <ListView x:Name="lstPaginas" VerticalOptions="FillAndExpand" SeparatorVisibility="None" ItemsSource="{Binding masterPageItem}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ImageCell TextColor="Black" Text="{Binding Titulo}" Detail="{Binding Detalhes}" ImageSource="{Binding Imagem}"></ImageCell>
+                        <ImageCell TextColor="Black" Text="{Binding Titulo}" Detail="{Binding Detalhes}" ImageSource="{Binding Imagem}" ></ImageCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
