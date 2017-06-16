@@ -44,6 +44,11 @@ namespace Fooder.Data
             else
                 return data.InsertAsync(item);
         }
+
+        public Task<int> Lista_DeleteItemAsync(Lista item)
+        {
+            return data.DeleteAsync(item);
+        }
         #endregion
 
         #region Metodos Classe Produto
@@ -77,7 +82,6 @@ namespace Fooder.Data
                     return await data.InsertAsync(item);
                 else
                     return await data.UpdateAsync(item);
-                #endregion
             }
             catch (Exception ex)
             {
@@ -86,5 +90,12 @@ namespace Fooder.Data
             }
 
         }
+
+        public async Task<int> ProdutoLista_DeleteItemsAsync(ProdutosLista CodigoLista)
+        {
+            return await data.DeleteAsync(CodigoLista);
+        }
+        #endregion
+
     }
 }

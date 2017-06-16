@@ -2,17 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fooder.Views.ListasCadastradasPage"
+             x:Name="ListasCadastradasPage"
              Title="Listas Cadastradas">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Novo" Clicked="OnItemAdded">
-            1</ToolbarItem>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ListView x:Name="LstProdutosCadastradas" SeparatorVisibility="Default" ItemsSource="{Binding ListaObjetos}" ItemSelected="OnListItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem IsDestructive="True" Text="Excluir" Command="{Binding Path=BindingContext.ExcluirLista, Source={x:Reference ListasCadastradasPage}}" CommandParameter="{Binding .}"></MenuItem>
+                    </ViewCell.ContextActions>
                     <Label Text="{Binding NomeLista}" FontSize="18" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
                 </ViewCell>
             </DataTemplate>

@@ -16,14 +16,32 @@ namespace Fooder.ViewModel
     {
         public ObservableCollection<Lista> ListaObjetos { get; set; }
         public ICommand GetRefreshedHistory { get; set; }
+        public ICommand ExcluirLista { get; set; }
+
         public ListasCadastradasPageViewModel()
         {
+            ExcluirLista = new Command<Lista>((lista) => ExcluirListaBaseDados(lista));
             GetRefreshedHistory = new Command(() => BuscaListaDatabase());
         }
         public async void BuscaListaDatabase()
         {
             ListaObjetos = new ObservableCollection<Lista>(await App.Database.Lista_GetItemsAsync());
         }
+        private async void ExcluirListaBaseDados(Lista ListaSelecionada)
+        {
+            if (await GlobalClasses.DisplayMessage.DisplayQuestionAlert("Confirmação", $"Deseja excluir a lista '{ListaSelecionada.NomeLista}' e seus produtos associados?", "Sim", "Não"))
+            {
+                foreach (ProdutosLista item in await App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista))
+                {
+                    await App.Database.ProdutoLista_DeleteItemsAsync(item);
+                }
+
+                await App.Database.Lista_DeleteItemAsync(ListaSelecionada);
+
+                BuscaListaDatabase();
+            }
+        }
+
     }
 
 }

@@ -14,5 +14,10 @@ namespace Fooder.GlobalClasses
 
         }
 
+        public async static Task<bool> DisplayQuestionAlert(string titulo, string mensagem, string textosim, string textonao)
+        {
+            return await App.Current.MainPage.DisplayAlert(titulo, mensagem, textosim, textonao);
+        }
+
     }
 }

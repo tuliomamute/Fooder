@@ -14,7 +14,7 @@
         <StackLayout Spacing="0">
             <Entry Text="{Binding ListaSelecionada.NomeLista}" Placeholder="Nome Lista" HorizontalOptions="FillAndExpand"></Entry>
         </StackLayout>
-        
+
         <ScrollView>
             <ListView x:Name="LstProdutosCadastrados" ItemsSource="{Binding ListaProdutos}" SeparatorVisibility="Default" IsRefreshing="{Binding Refresh}" RefreshCommand="{Binding GetRefreshedHistory}">
                 <ListView.ItemTemplate>

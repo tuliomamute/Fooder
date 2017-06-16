@@ -5,7 +5,7 @@
              Title="Criar Lista">
     <ScrollView>
         <StackLayout Padding="10">
-            <Entry Text="{Binding objLista.NomeLista}" Placeholder="Nome Lista"></Entry>
+            <Entry Text="{Binding ObjLista.NomeLista}" Placeholder="Nome Lista"></Entry>
             <Button Command="{Binding Navigate}" Text="Salvar"></Button>
         </StackLayout>
     </ScrollView>
