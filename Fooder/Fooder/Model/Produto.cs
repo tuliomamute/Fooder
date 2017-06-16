@@ -10,8 +10,8 @@ namespace Fooder.Model
     public class Produto
     {
         [PrimaryKey, AutoIncrement]
-        public int CodigoProduto { get; set; }
-        public string NomeProduto { get; set; }
+        public int PRODUTO_ID { get; set; }
+        public string NOME { get; set; }
     }
     public class ProdutoQuantidade : Produto
     {

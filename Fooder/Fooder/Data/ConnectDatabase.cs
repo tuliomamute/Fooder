@@ -59,7 +59,7 @@ namespace Fooder.Data
 
         public Task<int> Produto_SaveItemAsync(Produto item)
         {
-            if (item.CodigoProduto != 0)
+            if (item.PRODUTO_ID != 0)
                 return data.UpdateAsync(item);
             else
                 return data.InsertAsync(item);

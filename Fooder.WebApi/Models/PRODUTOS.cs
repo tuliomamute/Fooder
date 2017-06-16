@@ -23,6 +23,8 @@ namespace Fooder.WebApi.Models
         [StringLength(100)]
         public string NOME { get; set; }
 
+        [JsonIgnore]
+        [IgnoreDataMember]
         public int? CATEGORIA_ID { get; set; }
 
         [JsonIgnore]

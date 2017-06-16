@@ -46,7 +46,7 @@ namespace Fooder.ViewModel
 
             //Preenchimento da lista de produtos para ser escrita na tela
             foreach (var item in retorno)
-                ListaProdutos.Where(x => x.CodigoProduto == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
+                ListaProdutos.Where(x => x.PRODUTO_ID == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
 
         }
 
@@ -61,7 +61,7 @@ namespace Fooder.ViewModel
             //Percorrendo Lista de Produtos
             foreach (ProdutoQuantidade item in ListaProdutos.Where(x => x.QuantidadeProduto > 0))
             {
-                prodlist.CodigoProduto = item.CodigoProduto;
+                prodlist.CodigoProduto = item.PRODUTO_ID;
                 prodlist.CodigoLista = ListaSelecionada.CodigoLista;
                 prodlist.QuantidadeProduto = item.QuantidadeProduto;
 
