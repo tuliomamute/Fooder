@@ -31,37 +31,8 @@ namespace Fooder
         public App()
         {
             InitializeComponent();
-            CriarProdutos();
 
             MainPage = new MasterPaginaMestraPage();
-        }
-
-        private void CriarProdutos()
-        {
-            if (Database.Produto_GetItemsAsync().Result.Count == 0)
-            {
-
-                Produto prod = new Produto();
-                prod.NomeProduto = "Produto 1";
-
-                Database.Produto_SaveItemAsync(prod);
-
-                prod = new Produto();
-                prod.NomeProduto = "Produto 2";
-
-                Database.Produto_SaveItemAsync(prod);
-
-                prod = new Produto();
-                prod.NomeProduto = "Produto 3";
-
-                Database.Produto_SaveItemAsync(prod);
-
-
-                prod = new Produto();
-                prod.NomeProduto = "Produto 4";
-
-                Database.Produto_SaveItemAsync(prod);
-            }
         }
 
         protected override void OnStart()

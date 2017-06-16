@@ -26,7 +26,7 @@ namespace Fooder.ViewModel
             {
                 ListaSelecionada = aLista;
 
-                var serializedParent = JsonConvert.SerializeObject(App.Database.Produto_GetItemsAsync().Result);
+                var serializedParent = JsonConvert.SerializeObject(Fooder.ExternalService.FooderService.RetornaProdutos().Result);
                 ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
 
                 RecuperarListaBancoLocal();
