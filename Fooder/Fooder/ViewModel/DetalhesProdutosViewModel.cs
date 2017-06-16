@@ -7,9 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using PropertyChanged;
 
 namespace Fooder.ViewModel
 {
+    [ImplementPropertyChanged]
     public class DetalhesProdutosViewModel
     {
         public ObservableCollection<DetalhesProdutos> ProdutosEncontrados { get; set; }
@@ -20,8 +22,8 @@ namespace Fooder.ViewModel
         public bool VisivelEncontrados { get; set; }
         public bool VisivelNaoEncontrados { get; set; }
 
-        private ICommand AbrirListaNaoEncontrados { get; set; }
-        private ICommand AbrirListaEncontrados { get; set; }
+        public ICommand AbrirListaNaoEncontrados { get; set; }
+        public ICommand AbrirListaEncontrados { get; set; }
 
         public DetalhesProdutosViewModel(ClassificacaoMercados mercados)
         {
