@@ -20,10 +20,13 @@ namespace Fooder.ViewModel
         public ICommand SalvarProdutosLista { get; set; }
         public Lista ListaSelecionada { get; set; }
         public ObservableCollection<ProdutoQuantidade> ListaProdutos { get; set; }
+        public bool Carregando { get; set; }
         public AssociacaoProdutosListaPageViewModel(Lista aLista)
         {
             try
             {
+                Carregando = true;
+
                 ListaSelecionada = aLista;
 
                 RecuperarListaBancoLocal();
@@ -42,6 +45,9 @@ namespace Fooder.ViewModel
         {
             var serializedParent = JsonConvert.SerializeObject(await ExternalService.FooderService.RetornaProdutos());
             ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
+
+            if (ListaProdutos.Count > 0)
+                Carregando = false;
 
         }
 
