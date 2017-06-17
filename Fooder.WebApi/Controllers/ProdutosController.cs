@@ -22,9 +22,21 @@ namespace Fooder.WebApi.Controllers
         /// <returns></returns>
         [ResponseType(typeof(List<PRODUTOS>))]
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(string quantidade)
         {
-            return Ok(db.PRODUTOS.ToList());
+            try
+            {
+                return Ok(RetornarProdutos());
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+        }
+
+        private List<PRODUTOS> RetornarProdutos()
+        {
+            return db.PRODUTOS.ToList();
         }
 
     }

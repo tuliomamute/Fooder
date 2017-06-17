@@ -26,10 +26,8 @@ namespace Fooder.ViewModel
             {
                 ListaSelecionada = aLista;
 
-                var serializedParent = JsonConvert.SerializeObject(Fooder.ExternalService.FooderService.RetornaProdutos().Result);
-                ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
-
                 RecuperarListaBancoLocal();
+                BuscaProdutos();
 
                 SalvarProdutosLista = new Command(() => PersistirElementosBaseDadosAsync());
             }
@@ -38,6 +36,13 @@ namespace Fooder.ViewModel
 
                 throw ex;
             }
+        }
+
+        private async void BuscaProdutos()
+        {
+            var serializedParent = JsonConvert.SerializeObject(await ExternalService.FooderService.RetornaProdutos());
+            ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
+
         }
 
         private void RecuperarListaBancoLocal()

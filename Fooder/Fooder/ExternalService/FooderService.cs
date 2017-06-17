@@ -53,7 +53,7 @@ namespace Fooder.ExternalService
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    HttpResponseMessage response = await client.GetAsync($"/api/Produtos/");
+                    HttpResponseMessage response = await client.GetAsync($"/api/Produtos?quantidade={"0"}");
 
                     if (response.IsSuccessStatusCode)
                         model = JsonConvert.DeserializeObject<ObservableCollection<Produto>>(await response.Content.ReadAsStringAsync());
