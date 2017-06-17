@@ -95,6 +95,14 @@ namespace Fooder.Data
         {
             return await data.DeleteAsync(CodigoLista);
         }
+
+        public async void ProdutoLista_BasedOnCode(int CodigoProduto, int CodigoLista)
+        {
+            ProdutosLista prod = data.Table<ProdutosLista>().Where(x => x.CodigoLista == CodigoLista && x.CodigoProduto == CodigoProduto).FirstOrDefaultAsync().Result;
+
+            if (prod != null)
+                await data.DeleteAsync(prod);
+        }
         #endregion
 
     }

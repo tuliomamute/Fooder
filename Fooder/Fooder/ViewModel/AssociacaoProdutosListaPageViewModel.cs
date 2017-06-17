@@ -16,6 +16,7 @@ namespace Fooder.ViewModel
     [ImplementPropertyChanged]
     public class AssociacaoProdutosListaPageViewModel
     {
+        public INavigation Navigation { get; set; }
         public ICommand RecuperarQuantidade { get; set; }
         public ICommand SalvarProdutosLista { get; set; }
         public Lista ListaSelecionada { get; set; }
@@ -24,7 +25,7 @@ namespace Fooder.ViewModel
 
         private ObservableCollection<ProdutoQuantidade> BackupListaProdutos { get; set; }
 
-        public AssociacaoProdutosListaPageViewModel(Lista aLista)
+        public AssociacaoProdutosListaPageViewModel(Lista aLista, INavigation nav)
         {
             try
             {
@@ -35,6 +36,7 @@ namespace Fooder.ViewModel
                 BuscaProdutos();
 
                 SalvarProdutosLista = new Command(() => PersistirElementosBaseDadosAsync());
+                Navigation = nav;
             }
             catch (Exception ex)
             {
@@ -103,7 +105,12 @@ namespace Fooder.ViewModel
                 await App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
 
+            foreach (ProdutoQuantidade item in ListaProdutos.Where(x => x.QuantidadeProduto == 0))
+                App.Database.ProdutoLista_BasedOnCode(item.PRODUTO_ID, ListaSelecionada.CodigoLista);
+
             DisplayMessage.DisplayMessageAlert("Confirmação", "Produtos Incluidos na Lista com Sucesso!");
+
+            await Navigation.PopAsync();
         }
     }
 }

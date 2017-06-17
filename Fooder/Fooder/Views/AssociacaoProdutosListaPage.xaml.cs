@@ -21,7 +21,7 @@ namespace Fooder.Views
         public AssociacaoProdutosListaPage(Lista aLista)
         {
             InitializeComponent();
-            BindingContext = new AssociacaoProdutosListaPageViewModel(aLista);
+            BindingContext = new AssociacaoProdutosListaPageViewModel(aLista, this.Navigation);
         }
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
