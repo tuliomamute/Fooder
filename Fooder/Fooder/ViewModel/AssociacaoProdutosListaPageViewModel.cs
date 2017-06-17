@@ -21,6 +21,9 @@ namespace Fooder.ViewModel
         public Lista ListaSelecionada { get; set; }
         public ObservableCollection<ProdutoQuantidade> ListaProdutos { get; set; }
         public bool Carregando { get; set; }
+
+        private ObservableCollection<ProdutoQuantidade> BackupListaProdutos { get; set; }
+
         public AssociacaoProdutosListaPageViewModel(Lista aLista)
         {
             try
@@ -29,7 +32,6 @@ namespace Fooder.ViewModel
 
                 ListaSelecionada = aLista;
 
-                RecuperarListaBancoLocal();
                 BuscaProdutos();
 
                 SalvarProdutosLista = new Command(() => PersistirElementosBaseDadosAsync());
@@ -41,13 +43,30 @@ namespace Fooder.ViewModel
             }
         }
 
+        public void FiltrarElementosLista(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+            {
+                ListaProdutos = BackupListaProdutos;
+                return;
+            }
+
+            ListaProdutos = new ObservableCollection<ProdutoQuantidade>(BackupListaProdutos.Where(x => x.NOME.ToLower().Contains(texto.ToLower())).ToList());
+
+        }
+
         private async void BuscaProdutos()
         {
             var serializedParent = JsonConvert.SerializeObject(await ExternalService.FooderService.RetornaProdutos());
             ListaProdutos = JsonConvert.DeserializeObject<ObservableCollection<ProdutoQuantidade>>(serializedParent);
 
+            BackupListaProdutos = ListaProdutos;
+
             if (ListaProdutos.Count > 0)
+            {
+                RecuperarListaBancoLocal();
                 Carregando = false;
+            }
 
         }
 
@@ -55,9 +74,14 @@ namespace Fooder.ViewModel
         {
             var retorno = App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista).Result;
 
+            while (ListaProdutos == null)
+                continue;
+
             //Preenchimento da lista de produtos para ser escrita na tela
             foreach (var item in retorno)
+            {
                 ListaProdutos.Where(x => x.PRODUTO_ID == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
+            }
 
         }
 

@@ -23,6 +23,11 @@ namespace Fooder.Views
             InitializeComponent();
             BindingContext = new AssociacaoProdutosListaPageViewModel(aLista);
         }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((AssociacaoProdutosListaPageViewModel)BindingContext).FiltrarElementosLista(TxtSearch.Text);
+        }
     }
 
 }
