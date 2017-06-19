@@ -2,12 +2,20 @@
 <resources>
 
   <color name="lightPrimarySplash">#4CAF50</color>
+  <color name="ListViewSelected">#FFCDD2</color>
 
 
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
-  <!-- Base theme applied no matter what API -->
   <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--Tratamento para elemento selecionado na lista-->
+    <item name="android:colorPressedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorLongPressedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorFocusedHighlight">@color/ListViewSelected</item>
+    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
+    <item name="android:activatedBackgroundIndicator">@color/ListViewSelected</item>
+
+    <!-- Base theme applied no matter what API -->
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->

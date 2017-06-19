@@ -34,6 +34,11 @@ namespace Fooder.WebApi.Models
         /// Quantidade de itens encontrados a partir da lista de produtos informados
         /// </summary>
         public int QuantidadeItensEncontrados { get; set; }
+        /// <summary>
+        /// Ícone a ser exibido na listagem
+        /// </summary>
+        public string IconeLista { get; set; }
+
     }
     /// <summary>
     /// Detalhes dos produtos de um determinado supermercado

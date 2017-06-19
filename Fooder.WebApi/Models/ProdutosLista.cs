@@ -21,6 +21,6 @@ namespace Fooder.WebApi.Models
         /// <summary>
         /// Quantidade de unidades de um determinado produto
         /// </summary>
-        public int QuantidadeProduto { get; set; }
+        public string QuantidadeProduto { get; set; }
     }
 }

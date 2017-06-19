@@ -34,7 +34,7 @@ namespace Fooder.Views
 
         private void LstClassificacaoSupermercados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as ClassificacaoMercados;
+            ClassificacaoMercados item = e.SelectedItem as ClassificacaoMercados;
 
             if (item != null)
                 Device.OpenUri(new Uri(item.UrlMapa));

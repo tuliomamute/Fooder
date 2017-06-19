@@ -78,7 +78,7 @@ namespace Fooder.WebApi.Controllers
                         QuantidadeItensEncontrados++;
                         ListaDetails.Add(new DetalhesProdutos()
                         {
-                            SomaProduto = itemLista.QuantidadeProduto * itemEstoque.PRECO,
+                            SomaProduto = decimal.Parse(itemLista.QuantidadeProduto) * itemEstoque.PRECO,
                             ProdutoId = itemLista.CodigoProduto,
                             NomeProduto = itemEstoque.PRODUTOS.NOME
                         });
@@ -97,6 +97,8 @@ namespace Fooder.WebApi.Controllers
                 //Ordenação dos menores para os maiores preços
                 ListaDetails = ListaDetails.OrderBy(x => x.SomaProduto).ToList();
 
+                bool DadosRecuperados = ListaDetails.Where(x => x.SomaProduto != 0).Count() == ListaProdutos.Count;
+
                 //Criação do Objeto de Supermercado
                 ClassificacaoMercado.Add(new ClassificacaoMercados()
                 {
@@ -104,13 +106,14 @@ namespace Fooder.WebApi.Controllers
                     NomeSupermercado = item.NOME,
                     UrlMapa = item.URL_MAPA,
                     PrecoTotal = ListaDetails.Sum(x => x.SomaProduto),
-                    ListaCompleta = ListaDetails.Count == Estoque.Count,
-                    QuantidadeItensEncontrados = QuantidadeItensEncontrados
+                    ListaCompleta = DadosRecuperados,
+                    QuantidadeItensEncontrados = QuantidadeItensEncontrados,
+                    IconeLista = DadosRecuperados ? "checked_verde" : "checked_vermelho"
                 });
             }
 
             //Ordenação baseado se alguma lista foi encontrada completa e depois pela quantidade de itens encontrados
-            ClassificacaoMercado = ClassificacaoMercado.OrderByDescending(x => x.ListaCompleta).OrderBy(x=>x.PrecoTotal).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
+            ClassificacaoMercado = ClassificacaoMercado.OrderByDescending(x => x.ListaCompleta).OrderBy(x => x.PrecoTotal).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
 
             return ClassificacaoMercado;
         }

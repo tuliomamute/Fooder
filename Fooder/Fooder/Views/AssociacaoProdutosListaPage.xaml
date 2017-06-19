@@ -34,7 +34,7 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                     <Label FontSize="15" Text="{Binding NOME}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                    <Entry WidthRequest="50" Keyboard="Numeric" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" Text="{Binding QuantidadeProduto}"></Entry>
+                                    <Entry WidthRequest="50" Keyboard="Numeric" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" Text="{Binding QuantidadeProduto,Mode=TwoWay}"></Entry>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

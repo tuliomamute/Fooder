@@ -19,6 +19,6 @@ namespace Fooder.Model
         //[Indexed(Name = "CodigoLista", Order = 2, Unique = true)]
         public int CodigoLista { get; set; }
 
-        public int QuantidadeProduto { get; set; }
+        public string QuantidadeProduto { get; set; }
     }
 }

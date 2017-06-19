@@ -84,7 +84,7 @@ namespace Fooder.ViewModel
             {
                 ListaProdutos.Where(x => x.PRODUTO_ID == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
             }
-
+            ListaProdutos = new ObservableCollection<ProdutoQuantidade>(ListaProdutos.OrderByDescending(x => x.QuantidadeProduto).OrderBy(x => x.NOME).ToList());
         }
 
         private async void PersistirElementosBaseDadosAsync()
@@ -95,8 +95,10 @@ namespace Fooder.ViewModel
             //Salvando Lista, caso tenha alterado algo
             await App.Database.Lista_SaveItemAsync(ListaSelecionada);
 
+
+
             //Percorrendo Lista de Produtos
-            foreach (ProdutoQuantidade item in ListaProdutos.Where(x => x.QuantidadeProduto > 0))
+            foreach (ProdutoQuantidade item in ListaProdutos.Where(x => !string.IsNullOrEmpty(x.QuantidadeProduto)))
             {
                 prodlist.CodigoProduto = item.PRODUTO_ID;
                 prodlist.CodigoLista = ListaSelecionada.CodigoLista;
@@ -105,7 +107,7 @@ namespace Fooder.ViewModel
                 await App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
 
-            foreach (ProdutoQuantidade item in ListaProdutos.Where(x => x.QuantidadeProduto == 0))
+            foreach (ProdutoQuantidade item in ListaProdutos.Where(x => string.IsNullOrEmpty(x.QuantidadeProduto)))
                 App.Database.ProdutoLista_BasedOnCode(item.PRODUTO_ID, ListaSelecionada.CodigoLista);
 
             DisplayMessage.DisplayMessageAlert("Confirmação", "Produtos Incluidos na Lista com Sucesso!");

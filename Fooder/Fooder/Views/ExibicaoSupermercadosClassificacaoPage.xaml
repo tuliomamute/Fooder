@@ -37,7 +37,7 @@
                                         <Label Text="{Binding PrecoTotal}"></Label>
                                     </StackLayout>
 
-                                    <Image Source="list_icon.png" HorizontalOptions="EndAndExpand">
+                                    <Image Source="{Binding IconeLista}" HorizontalOptions="EndAndExpand">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Path=BindingContext.RedirecionarMapa, Source={x:Reference ExibicaoSupermercadosClassificacaoPage}}" CommandParameter="{Binding .}"></TapGestureRecognizer>
                                         </Image.GestureRecognizers>
