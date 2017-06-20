@@ -71,7 +71,6 @@ namespace Fooder.WebApi.Controllers
                     itemEstoque = Estoque.Where(x => x.PRODUTO_ID == itemLista.CodigoProduto).FirstOrDefault();
 
                     //Se algum produto escolhido no aplicativo estiver na lista, calcula-se o valor, caso o contrário, ele assume o valor 0.
-                    //Refazer trecho, para quando não for encontrado, adicionar com valor zerado
 
                     if (itemEstoque != null)
                     {
