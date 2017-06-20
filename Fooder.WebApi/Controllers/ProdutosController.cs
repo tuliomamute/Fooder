@@ -36,7 +36,7 @@ namespace Fooder.WebApi.Controllers
 
         private List<PRODUTOS> RetornarProdutos()
         {
-            return db.PRODUTOS.ToList();
+            return db.PRODUTOS.OrderBy(x => x.NOME).ToList();
         }
 
     }

@@ -113,7 +113,8 @@ namespace Fooder.WebApi.Controllers
             }
 
             //Ordenação baseado se alguma lista foi encontrada completa e depois pela quantidade de itens encontrados
-            ClassificacaoMercado = ClassificacaoMercado.OrderByDescending(x => x.ListaCompleta).OrderBy(x => x.PrecoTotal).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
+            //Filtragem para trazer apenas os supermercados onde tivemos pelos menos 1 produto encontrado
+            ClassificacaoMercado = ClassificacaoMercado.Where(x => x.QuantidadeItensEncontrados > 0).OrderByDescending(x => x.ListaCompleta).OrderBy(x => x.PrecoTotal).OrderByDescending(x => x.QuantidadeItensEncontrados).ToList();
 
             return ClassificacaoMercado;
         }

@@ -84,7 +84,7 @@ namespace Fooder.ViewModel
             {
                 ListaProdutos.Where(x => x.PRODUTO_ID == item.CodigoProduto).FirstOrDefault().QuantidadeProduto = item.QuantidadeProduto;
             }
-            ListaProdutos = new ObservableCollection<ProdutoQuantidade>(ListaProdutos.OrderByDescending(x => x.QuantidadeProduto).OrderBy(x => x.NOME).ToList());
+            ListaProdutos = new ObservableCollection<ProdutoQuantidade>(ListaProdutos.OrderByDescending(x => x.QuantidadeProduto).ToList());
         }
 
         private async void PersistirElementosBaseDadosAsync()
