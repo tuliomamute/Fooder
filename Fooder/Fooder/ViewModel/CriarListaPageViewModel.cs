@@ -31,6 +31,8 @@ namespace Fooder.ViewModel
             Navigate = new Command(() => SalvarListaBaseDados());
 
         }
+
+        //Salvando lista na base de dados.
         private async void SalvarListaBaseDados()
         {
             await App.Database.Lista_SaveItemAsync(ObjLista);

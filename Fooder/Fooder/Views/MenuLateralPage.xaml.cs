@@ -26,6 +26,7 @@ namespace Fooder.Views
 
             List<MasterPageItem> masterPageItem = null;
 
+            //Criação do menu lateral
             masterPageItem = new List<MasterPageItem>();
             masterPageItem.Add(new MasterPageItem
             {

@@ -28,6 +28,7 @@ namespace Fooder.ViewModel
         public DetalhesProdutosViewModel(ClassificacaoMercados mercados)
         {
             mercado = mercados;
+            //Montagem das listas de produtos encontrados e não encontrados
             ProdutosNaoEncontrados = new ObservableCollection<DetalhesProdutos>(mercados.DetalhesProdutos.Where(x => x.SomaProduto == 0).ToList());
             ProdutosEncontrados = new ObservableCollection<DetalhesProdutos>(mercados.DetalhesProdutos.Where(x => x.SomaProduto != 0).ToList());
 
@@ -39,6 +40,7 @@ namespace Fooder.ViewModel
 
         }
 
+        //Evento criado para fazer o papel de collapse das listas de produtos não encontrados
         public void EsconderNaoEncontrados()
         {
             if (ProdutosNaoEncontrados.Count == 0)
@@ -50,6 +52,8 @@ namespace Fooder.ViewModel
             VisivelNaoEncontrados = !VisivelNaoEncontrados;
 
         }
+
+        //Evento criado para fazer o papel de collapse das listas de produtos encontrados.
         public void EsconderEncontrados()
         {
             if (ProdutosEncontrados.Count == 0)

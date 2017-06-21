@@ -27,8 +27,11 @@ namespace Fooder.ViewModel
         {
             ListaObjetos = new ObservableCollection<Lista>(await App.Database.Lista_GetItemsAsync());
         }
+
+        //Exclusão da lista e de seus dependentes da base de dados
         private async void ExcluirListaBaseDados(Lista ListaSelecionada)
         {
+            //Emissão da mensagem de confirmação
             if (await GlobalClasses.DisplayMessage.DisplayQuestionAlert("Confirmação", $"Deseja excluir a lista '{ListaSelecionada.NomeLista}' e seus produtos associados?", "Sim", "Não"))
             {
                 foreach (ProdutosLista item in await App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista))

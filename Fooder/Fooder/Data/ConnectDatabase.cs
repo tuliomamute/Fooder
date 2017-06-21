@@ -11,10 +11,17 @@ using System.Collections.ObjectModel;
 
 namespace Fooder.Data
 {
+    /// <summary>
+    /// classe responsável por fazer a conexão com o SQLITE
+    /// </summary>
     public class ConnectDatabase
     {
         readonly SQLiteAsyncConnection data;
 
+        /// <summary>
+        /// Criação da conexão e das tabelas
+        /// </summary>
+        /// <param name="dbPath"></param>
         public ConnectDatabase(string dbPath)
         {
 

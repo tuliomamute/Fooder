@@ -16,6 +16,9 @@ namespace Fooder
     {
         static ConnectDatabase database;
 
+        /// <summary>
+        /// Instancia da conexão com o SQLITE
+        /// </summary>
         public static ConnectDatabase Database
         {
             get

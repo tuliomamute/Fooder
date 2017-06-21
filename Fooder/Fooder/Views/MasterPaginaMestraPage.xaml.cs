@@ -24,6 +24,11 @@ namespace Fooder.Views
             Detail = new NavigationPage(new ListasCadastradasPage());
             menu.ListPaginas.ItemSelected += OnItemSelected;
         }
+        /// <summary>
+        /// Evento para redirecionar para as telas de detalhes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MasterPageItem;

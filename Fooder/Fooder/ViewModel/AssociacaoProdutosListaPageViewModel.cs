@@ -45,6 +45,10 @@ namespace Fooder.ViewModel
             }
         }
 
+        /// <summary>
+        /// Filtra a lista de produtos, baseado no que foi escrito no campo de searchbar
+        /// </summary>
+        /// <param name="texto"></param>
         public void FiltrarElementosLista(string texto)
         {
             if (string.IsNullOrEmpty(texto))
@@ -53,10 +57,14 @@ namespace Fooder.ViewModel
                 return;
             }
 
+            //Realiza a busca na lista de backup, para setar na lista bindada
             ListaProdutos = new ObservableCollection<ProdutoQuantidade>(BackupListaProdutos.Where(x => x.NOME.ToLower().Contains(texto.ToLower())).ToList());
 
         }
 
+        /// <summary>
+        /// Carrega a lista de todos os produtos (a partir da WEBAPI)
+        /// </summary>
         private async void BuscaProdutos()
         {
             var serializedParent = JsonConvert.SerializeObject(await ExternalService.FooderService.RetornaProdutos());
@@ -72,6 +80,7 @@ namespace Fooder.ViewModel
 
         }
 
+        //Recupepera os produtos e suas quantidades do banco SQLITE
         private void RecuperarListaBancoLocal()
         {
             var retorno = App.Database.ProdutoLista_GetItemsAsync(ListaSelecionada.CodigoLista).Result;
@@ -87,6 +96,7 @@ namespace Fooder.ViewModel
             ListaProdutos = new ObservableCollection<ProdutoQuantidade>(ListaProdutos.OrderByDescending(x => x.QuantidadeProduto).ToList());
         }
 
+        //Salva alterações na quantidade de produtos e no nome da lista na base de dados
         private async void PersistirElementosBaseDadosAsync()
         {
             ProdutosLista prodlist = null;
@@ -94,9 +104,7 @@ namespace Fooder.ViewModel
 
             //Salvando Lista, caso tenha alterado algo
             await App.Database.Lista_SaveItemAsync(ListaSelecionada);
-
-
-
+            
             //Percorrendo Lista de Produtos
             foreach (ProdutoQuantidade item in ListaProdutos.Where(x => !string.IsNullOrEmpty(x.QuantidadeProduto)))
             {
@@ -107,11 +115,13 @@ namespace Fooder.ViewModel
                 await App.Database.ProdutoLista_SaveItemAsync(prodlist);
             }
 
+            //Exclusão de registro no relacionamento, caso o valor seja zerado
             foreach (ProdutoQuantidade item in ListaProdutos.Where(x => string.IsNullOrEmpty(x.QuantidadeProduto)))
                 App.Database.ProdutoLista_BasedOnCode(item.PRODUTO_ID, ListaSelecionada.CodigoLista);
 
             DisplayMessage.DisplayMessageAlert("Confirmação", "Produtos Incluidos na Lista com Sucesso!");
 
+            //retorno para a tela de listas
             await Navigation.PopAsync();
         }
     }

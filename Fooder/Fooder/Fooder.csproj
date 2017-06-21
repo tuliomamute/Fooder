@@ -121,9 +121,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InternalService\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Views\MasterPaginaMestraPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

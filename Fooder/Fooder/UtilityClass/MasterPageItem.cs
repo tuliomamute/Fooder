@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fooder.UtilityClass
 {
+    /// <summary>
+    /// Classe para criação dos itens de menu lateral
+    /// </summary>
     public class MasterPageItem
     {
         public string Titulo { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fooder.Interfaces.DependencyService
 {
+    /// <summary>
+    /// Interface criada para utilização de SQLITE
+    /// </summary>
     public interface IFileHelper
     {
         string GetLocalFilePath(string filename);

@@ -41,6 +41,7 @@ namespace Fooder.ViewModel
 
         }
 
+        //Busca dos dados da WEBAPI retornando a classificação dos supermercados
         private async void BuscarClassificacao()
         {
             try
@@ -58,6 +59,8 @@ namespace Fooder.ViewModel
                 throw ex;
             }
         }
+
+        //Redireciona para a tela de detalhes dos produtos
         private void TelaDetalhesProduto(ClassificacaoMercados mercados)
         {
             try

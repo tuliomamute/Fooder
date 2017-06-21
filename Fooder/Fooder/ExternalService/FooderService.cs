@@ -13,6 +13,11 @@ namespace Fooder.ExternalService
 {
     public static class FooderService
     {
+        /// <summary>
+        /// Metodo responsável por realizar a requisição na WEBAPI para retorno das classificações dos supermercados
+        /// </summary>
+        /// <param name="ListaProdutos">Lista de produtos com as quantidades</param>
+        /// <returns></returns>
         public static async Task<ObservableCollection<ClassificacaoMercados>> RetornaClassificacoes(List<ProdutosLista> ListaProdutos)
         {
             ObservableCollection<ClassificacaoMercados> model = null;
@@ -42,6 +47,10 @@ namespace Fooder.ExternalService
 
         }
 
+        /// <summary>
+        /// Métodos responsável por fazer a requisição na WEBAPI, para retorno dos produtos
+        /// </summary>
+        /// <returns></returns>
         public static async Task<ObservableCollection<Produto>> RetornaProdutos()
         {
             ObservableCollection<Produto> model = null;
