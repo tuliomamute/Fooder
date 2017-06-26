@@ -17,7 +17,8 @@ namespace Fooder.ViewModel
         public ObservableCollection<DetalhesProdutos> ProdutosEncontrados { get; set; }
         public ObservableCollection<DetalhesProdutos> ProdutosNaoEncontrados { get; set; }
 
-        public ClassificacaoMercados mercado;
+        public string Mercado { get; set; }
+        public string ValorMercado { get; set; }
 
         public bool VisivelEncontrados { get; set; }
         public bool VisivelNaoEncontrados { get; set; }
@@ -27,7 +28,8 @@ namespace Fooder.ViewModel
 
         public DetalhesProdutosViewModel(ClassificacaoMercados mercados)
         {
-            mercado = mercados;
+            Mercado = $"{mercados.NomeSupermercado}";
+            ValorMercado = $"Valor Total: R${mercados.PrecoTotal}";
             //Montagem das listas de produtos encontrados e não encontrados
             ProdutosNaoEncontrados = new ObservableCollection<DetalhesProdutos>(mercados.DetalhesProdutos.Where(x => x.SomaProduto == 0).ToList());
             ProdutosEncontrados = new ObservableCollection<DetalhesProdutos>(mercados.DetalhesProdutos.Where(x => x.SomaProduto != 0).ToList());

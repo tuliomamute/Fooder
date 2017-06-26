@@ -5,8 +5,13 @@
              x:Name="DetalhesProdutosPage"
              Title="Detalhes">
     <StackLayout>
-        <Label Text="{Binding mercado.NomeSupermercado}"></Label>
 
+
+        <StackLayout>
+            <Label Text="{Binding Mercado}" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Binding ValorMercado}" HorizontalOptions="CenterAndExpand"></Label>
+            <BoxView HeightRequest="2" BackgroundColor="Transparent"></BoxView>
+        </StackLayout>
 
         <Label HeightRequest="40" IsEnabled="True" BackgroundColor="#4CAF50" Margin="10,0,10,0" Text="Produtos Não Encontrados" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
             <Label.GestureRecognizers>
@@ -14,12 +19,13 @@
             </Label.GestureRecognizers>
         </Label>
 
+
         <ScrollView IsVisible="{Binding VisivelNaoEncontrados}">
             <ListView IsVisible="{Binding VisivelNaoEncontrados}" ItemsSource="{Binding ProdutosNaoEncontrados}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding NomeProduto}"></Label>
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding NomeProduto}"></Label>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -32,12 +38,14 @@
             </Label.GestureRecognizers>
         </Label>
 
-        <ScrollView IsVisible="{Binding VisivelEncontrados}">
+        <ScrollView Margin="10,10,10,10" IsVisible="{Binding VisivelEncontrados}">
             <ListView IsVisible="{Binding VisivelEncontrados}" ItemsSource="{Binding ProdutosEncontrados}">
+                <ListView.Header>
+                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding NomeProduto}"></Label>
+                            <Label VerticalOptions="CenterAndExpand" Text="{Binding NomeProduto}"></Label>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
